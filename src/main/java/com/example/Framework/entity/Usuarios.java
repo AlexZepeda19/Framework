@@ -2,6 +2,7 @@ package com.example.Framework.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -13,19 +14,18 @@ public class Usuarios {
     private Long id_usuario;
 
     @Column(name = "nombre", nullable = false, length = 100)
-    private String nombre;  // Nombre del usuario
+    private String nombre;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
-    private String email;  // Email del usuario
+    private String email;
 
     @Column(name = "password", nullable = false, length = 255)
-    private String password;  // Contraseña del usuario
+    private String password;
 
-    @Column(name = "fecha_registro", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
-    private String fechaRegistro;  // Fecha y hora en la que se registró el usuario
+    @Column(name = "fecha_registro", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false, updatable = false)
+    private LocalDateTime fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", insertable = false, updatable = false)
-    private Roles rol;  // Relación con la tabla Roles (Many to One)
-
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
+    private Roles rol;
 }

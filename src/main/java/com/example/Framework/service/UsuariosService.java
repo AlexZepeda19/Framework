@@ -1,5 +1,6 @@
 package com.example.Framework.service;
 
+import com.example.Framework.entity.Roles;
 import com.example.Framework.entity.Usuarios;
 import com.example.Framework.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.Optional;
 public class UsuariosService {
 
     @Autowired
-    private UsuariosRepository usuariosRepository ;
+    private UsuariosRepository usuariosRepository;
 
     public List<Usuarios> getUsuarios() {
         return usuariosRepository.findAll();
@@ -22,12 +23,11 @@ public class UsuariosService {
         return usuariosRepository.findById(id);
     }
 
-    public void saveOrUpdate(Usuarios usuarios) {
-        usuariosRepository.save(usuarios);
+    public Usuarios saveOrUpdate(Usuarios usuarios) {
+        return usuariosRepository.save(usuarios);
     }
 
     public void deleteById(Long id) {
         usuariosRepository.deleteById(id);
     }
-
 }
