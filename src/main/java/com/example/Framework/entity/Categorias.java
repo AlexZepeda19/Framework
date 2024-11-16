@@ -18,4 +18,4 @@ public class Categorias {
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 }
-//hola enfermo
+
