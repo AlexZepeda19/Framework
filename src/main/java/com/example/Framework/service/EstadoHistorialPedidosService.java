@@ -13,22 +13,18 @@ public class EstadoHistorialPedidosService {
     @Autowired
     private EstadoHistorialPedidosRepository estadoHistorialPedidosRepository;
 
-    // Obtener todas las categorías
     public List<EstadoHistorialPedidos> getEstadoHistorialPedidos() {
         return estadoHistorialPedidosRepository.findAll();
     }
 
-    // Obtener una categoría por su ID
     public Optional<EstadoHistorialPedidos> getEstadoHistorialPedidos(Long id) {
         return estadoHistorialPedidosRepository.findById(id);
     }
 
-    // Guardar o actualizar una categoría
     public void saveOrUpdate(EstadoHistorialPedidos estadoHistorialPedidos) {
         estadoHistorialPedidosRepository.save(estadoHistorialPedidos);
     }
 
-    // Eliminar una categoría por su ID
     public void deleteById(Long id) {
         estadoHistorialPedidosRepository.deleteById(id);
     }
