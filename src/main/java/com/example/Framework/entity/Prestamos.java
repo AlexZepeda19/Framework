@@ -3,7 +3,6 @@ package com.example.Framework.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.security.Timestamp;
 import java.util.Date;
 
 @Data
@@ -13,7 +12,8 @@ public class Prestamos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_prestamo;
+    @Column(name = "id_prestamo")
+    private Long idPrestamo;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
@@ -24,10 +24,10 @@ public class Prestamos {
     private Libros libro;
 
     @Column(name = "fecha_prestamo")
-    private Timestamp fecha_prestamo;
+    private Date fechaPrestamo;
 
     @Column(name = "fecha_devolucion")
-    private Date fecha_devolucion;
+    private Date fechaDevolucion;
 
     @ManyToOne
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
