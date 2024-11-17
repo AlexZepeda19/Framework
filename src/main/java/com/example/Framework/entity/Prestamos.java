@@ -28,8 +28,4 @@ public class Prestamos {
 
     @Column(name = "fecha_devolucion")
     private Date fechaDevolucion;
-
-    @ManyToOne
-    @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
-    private EstadoPrestamo estado;
 }

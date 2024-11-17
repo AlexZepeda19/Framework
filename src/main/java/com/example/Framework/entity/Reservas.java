@@ -2,8 +2,7 @@ package com.example.Framework.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.security.Timestamp;
+import java.sql.Timestamp; // Asegúrate de importar el paquete correcto
 
 @Data
 @Entity
@@ -27,5 +26,5 @@ public class Reservas {
 
     @ManyToOne
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
-    private EstadoReservas estado;
+    private Estado estado;
 }

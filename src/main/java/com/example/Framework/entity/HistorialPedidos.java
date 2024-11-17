@@ -27,5 +27,5 @@ public class HistorialPedidos {
 
     @ManyToOne
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
-    private EstadoHistorialPedidos estado;
+    private Estado estado;
 }

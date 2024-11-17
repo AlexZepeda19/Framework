@@ -18,5 +18,5 @@ public class InventarioEjemplares {
 
     @ManyToOne
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
-    private EstadoInventarioEjemplares estado;
+    private Estado estado;
 }

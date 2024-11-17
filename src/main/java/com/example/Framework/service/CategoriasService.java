@@ -22,8 +22,8 @@ public class CategoriasService {
         return categoriasRepository.findById(id);
     }
 
-    public void saveOrUpdate(Categorias categorias) {
-        categoriasRepository.save(categorias);
+    public Categorias saveOrUpdate(Categorias categorias) {
+        return categoriasRepository.save(categorias);
     }
 
     public void deleteById(Long id) {
