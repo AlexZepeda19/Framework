@@ -38,7 +38,9 @@ public class UsuariosController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Long userId) {
-        usuariosService.deleteById(userId);
-    }
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Long userId) {
+        Optional<Usuarios> usuario = usuariosService.getUsuarios(userId);
+        if (usuario.isPresent()) { usuariosService.deleteById(userId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT); } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); } }
 }

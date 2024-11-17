@@ -3,6 +3,7 @@ package com.example.Framework.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,4 +29,7 @@ public class Usuarios {
     @ManyToOne
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
     private Roles rol;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Token> tokens;
 }
