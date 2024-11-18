@@ -23,8 +23,10 @@ public class AuthController {
         if (user.isPresent()) {
             Token token = usuariosService.findTokenByUser(user.get());  // Obtener el token del usuario desde el servicio
             if (token != null) {
-                Long roleId = user.get().getRol().getId_rol();  // Obtener el ID del rol
-                return ResponseEntity.ok(new LoginResponse(token.getToken(), roleId));
+                Long roleId = user.get().getRol().getId_rol();
+                Long idUser = user.get().getId_usuario(); // Obtener el id del usuario
+                // Incluir el idUser en la respuesta
+                return ResponseEntity.ok(new LoginResponse(token.getToken(), roleId, idUser));
             }
         }
         return new ResponseEntity<>("Credenciales inválidas", HttpStatus.UNAUTHORIZED);
@@ -59,13 +61,17 @@ public class AuthController {
         }
     }
 
+    // Respuesta de Login: ahora incluye idUser además de token y roleId
     public static class LoginResponse {
         private String token;
         private Long roleId;
+        private Long idUser; // Añadido idUser
 
-        public LoginResponse(String token, Long roleId) {
+        // Constructor
+        public LoginResponse(String token, Long roleId, Long idUser) {
             this.token = token;
             this.roleId = roleId;
+            this.idUser = idUser; // Inicialización de idUser
         }
 
         // Getters y setters
@@ -84,14 +90,26 @@ public class AuthController {
         public void setRoleId(Long roleId) {
             this.roleId = roleId;
         }
+
+        public Long getIdUser() {
+            return idUser;
+        }
+
+        public void setIdUser(Long idUser) {
+            this.idUser = idUser;
+        }
     }
 
     // Clase interna para la solicitud de logout
     public static class LogoutRequest {
         private String token;
+
         public String getToken() {
-            return token; }
+            return token;
+        }
+
         public void setToken(String token) {
-            this.token = token; }
+            this.token = token;
+        }
     }
 }
